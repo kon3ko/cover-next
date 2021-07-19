@@ -1,0 +1,42 @@
+{
+  "name": "cover-next",
+  "version": "1.0.0",
+  "description": "tools that will help you see new items and make it easier for you to use the website to load bittorrent.",
+  "main": "cover-next.js",
+  "repository": "https://github.com/kon3ko/cover-next",
+  "author": "Neko",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack --mode=development",
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch",
+    "serve": "webpack serve"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/preset-env": "^7.14.7",
+    "@webpack-cli/generators": "^2.2.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^5.2.6",
+    "prettier": "^2.3.2",
+    "sass": "^1.35.2",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.0.0",
+    "webpack": "^5.44.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.14.6",
+    "@fancyapps/ui": "^4.0.0-alpha.4",
+    "crypto-browserify": "^3.12.0",
+    "crypto-js": "^4.0.0",
+    "hash.js": "^1.1.7",
+    "jquery": "^3.6.0"
+  }
+}
