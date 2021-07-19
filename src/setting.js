@@ -274,6 +274,7 @@ class Setting {
             });
             Setting.donateVersion();
             Setting.save();
+            alert('บันทึกการตั้งค่าเรียบร้อยแล้ว กรุณารีโหลดหน้าเว็บใหม่อีกครั้ง')
         }));
 
         // new Fancybox([{ src : '#setting-panel', type : 'inline' }]);
