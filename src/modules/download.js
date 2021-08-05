@@ -49,13 +49,24 @@ class Download {
     static downloadedDetail( { html, detail } ) {
         Log('Downloaded...');
 
-        html = typeof html === 'object' ? html.innerHTML : html;
-        if (html.indexOf('(Downloaded ไปแล้ว)') !== -1) {
+        let _html = typeof html === 'object' ? html.innerHTML : html;
+        if (_html.indexOf('(Downloaded ไปแล้ว)') !== -1) {
             //set cache downloaded
             Cache.set({ key : 'downloaded', data : { key : detail.id, value : Cache.timestamp() } });
 
             Log('set downloaded and cache');
         }
+
+        $(html).on('click', 'a[title="Download this file"]', ()=>{
+                Log('Click Download');
+                Log('set downloaded...');
+
+                Cache.set({ key : 'downloaded', data : { key : detail.id, value : Cache.timestamp() } });
+
+                Log('set downloaded and cache');
+                Log('Done');
+        });
+
         Log('Done');
     }
 
