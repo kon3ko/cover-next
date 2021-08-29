@@ -68,7 +68,7 @@ class PassData {
         //cover
         let _cover = $(window.location.pathname === '/upfinish.php'
             ? 'td a>img[src="/pic/cam.gif"]'
-            : 'td[width="900"] a>img[src="pic/cam.gif "]', this.element).parent();
+            : 'td[width="900"] a>img[src="pic/cams.gif "]', this.element).parent();
         if (_cover.is('a')) {
             this.cover = _cover.attr('href');
         }
