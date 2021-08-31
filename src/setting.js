@@ -192,8 +192,8 @@ class Setting {
 <div class="form-group donate">
 <label class="donate">[Donate Version] เปลี่ยนชื่อเป็นสีเทาหากโหลดไปแล้ว (ย้อนหลัง)</label><br>
   <div class="form-input">
-        <input type="radio" name="downloadedHook" value="on"> <span class="green">เปิด</span> 
-        <input type="radio" name="downloadedHook" value="off"> <span class="red">ปิด</span>
+        <input type="radio" name="downloadFinish" value="on"> <span class="green">เปิด</span> 
+        <input type="radio" name="downloadFinish" value="off"> <span class="red">ปิด</span>
     </div>
   <span>รายการที่ดาวน์โหลดไปแล้ว (ดึงย้อนหลังแค่ 30 วัน ไม่เกิน 100 หน้า)</span>
 </div>
