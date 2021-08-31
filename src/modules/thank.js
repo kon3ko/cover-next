@@ -21,7 +21,7 @@ class Thank {
         return await new Promise(async resolve => {
             Log(this.data.hash, 'thanking...');
 
-            let element = $('#saythank a', html);
+            let element = $('#saythanks a', html);
             if (element.length === 1) {
                 GM_xmlhttpRequest({
                     method    : "GET",
@@ -65,7 +65,7 @@ class Thank {
 
     static thankInDetail( element ) {
         Log('Thank in detail');
-        let a = $('#saythank a', element);
+        let a = $('#saythanks a', element);
 
         if (a) {
             eval(a.attr('onclick'));
