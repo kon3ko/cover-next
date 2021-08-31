@@ -4,35 +4,42 @@ import {Fancybox} from "@fancyapps/ui";
 import category from "./category";
 
 class Setting {
-    static key                        = 'COVER_NEXT';
-    static version                    = '1.0';
-    static serial                     = '';
-    static cache                      = true;
-    static cacheTimeout               = 604800;
-    static preview                    = true;
-    static previewHover               = true;
-    static titleHover                 = true; //Donate Version
-    static previewColumnMaxHeight     = 171; //Set false for use auto detect column height
-    static previewMaxHeight           = 80;
-    static previewMaxWidth            = 120;
-    static previewFail                = 'https://i.imgur.com/jaM7eqT.png?1';
-    static previewExcept              = 'https://i.imgur.com/blbuhiy.png?1';
-    static exceptCategories           = ['man']; //Donate Version
-    static expandButton               = true;
-    static downloadWarningSize        = 10; //GB
-    static autoThankHook              = true;
-    static autoThankInDetail          = true;
-    static album                      = true; //Donate Version
-    static downloaded                 = true; //Donate Version
-    static downloadedHook             = true; //Donate Version
-    static cacheDownloadedHookTimeout = 21600;
-    static downloadWithoutVip         = false;
-    static fixImageOverScreen         = true;
-    static cleanLogo                  = true;
-    static cleanDetailBanner          = true; //Donate Version
-    static cleanDetailDownloadImage   = true;
-    static cleanDetailBookmarks       = true;
-    static cleanDetailPromote         = true;
+    static key                            = 'COVER_NEXT';
+    static version                        = '1.20';
+    static serial                         = '';
+    static cache                          = true;
+    static cacheTimeout                   = 604800;
+    static preview                        = true;
+    static previewHover                   = true;
+    static titleHover                     = true; //Donate Version
+    static previewColumnMaxHeight         = 171; //Set false for use auto detect column height
+    static previewMaxHeight               = 80;
+    static previewMaxWidth                = 120;
+    static previewFail                    = 'https://i.imgur.com/jaM7eqT.png?1';
+    static previewExcept                  = 'https://i.imgur.com/blbuhiy.png?1';
+    static exceptCategories               = ['man']; //Donate Version
+    static expandButton                   = true;
+    static downloadWarningSize            = 10; //GB
+    static autoThankHook                  = true;
+    static autoThankInDetail              = true;
+    static album                          = true; //Donate Version
+    static downloaded                     = true; //Donate Version
+    static downloadedHook                 = false; //Donate Version
+    static cacheDownloadedHookTimeout     = 21600;
+    static downloadFinish                 = true; //Donate Version
+    static downloadFinishCacheTimeout     = 300;
+    static downloadFinishNewestHash       = null;
+    static downloadFinishOldestAt         = 0;
+    static downloadFinishNewestAt         = 0;
+    static downloadFinishHistoricalDays   = 30;
+    static downloadFinishHistoricalWorked = false;
+    static downloadWithoutVip             = false;
+    static fixImageOverScreen             = true;
+    static cleanLogo                      = true;
+    static cleanDetailBanner              = true; //Donate Version
+    static cleanDetailDownloadImage       = true;
+    static cleanDetailBookmarks           = true;
+    static cleanDetailPromote             = true;
 
     static load() {
         Log('Load setting');
@@ -79,6 +86,7 @@ class Setting {
             Setting.downloadedHook    = false;
             Setting.titleHover        = false;
             Setting.cleanDetailBanner = false;
+            Setting.downloadFinish    = false;
             Setting.exceptCategories  = [];
 
             return true;
@@ -182,12 +190,12 @@ class Setting {
 </div>
 
 <div class="form-group donate">
-<label class="donate">[Donate Version] เปลี่ยนชื่อเป็นสีเทาหากโหลดไปแล้ว (ดึงจากรายการ)</label><br>
+<label class="donate">[Donate Version] เปลี่ยนชื่อเป็นสีเทาหากโหลดไปแล้ว (ย้อนหลัง)</label><br>
   <div class="form-input">
         <input type="radio" name="downloadedHook" value="on"> <span class="green">เปิด</span> 
         <input type="radio" name="downloadedHook" value="off"> <span class="red">ปิด</span>
     </div>
-  <span>บอทจะวิ่งเข้าไปทุกรายการเพื่อดึงรายการที่เคยดาวน์โหลดไปแล้ว (ใช้สเปกเป็นอย่างมาก)</span>
+  <span>รายการที่ดาวน์โหลดไปแล้ว (ดึงย้อนหลังแค่ 30 วัน ไม่เกิน 100 หน้า)</span>
 </div>
 
 <div class="form-group">
@@ -274,7 +282,7 @@ class Setting {
             });
             Setting.donateVersion();
             Setting.save();
-            alert('บันทึกการตั้งค่าเรียบร้อยแล้ว กรุณารีโหลดหน้าเว็บใหม่อีกครั้ง')
+            alert('บันทึกการตั้งค่าเรียบร้อยแล้ว กรุณารีโหลดหน้าเว็บใหม่อีกครั้ง');
         }));
 
         // new Fancybox([{ src : '#setting-panel', type : 'inline' }]);

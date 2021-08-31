@@ -6,6 +6,9 @@ class Cache {
     source     = {};
     thank      = {};
     detail     = {};
+    data       = {
+        downloadFinishTimeout : 0
+    };
     code;
 
     constructor() {
@@ -40,6 +43,7 @@ class Cache {
         this.source     = { ...this.source, ...caches?.source };
         this.thank      = { ...this.thank, ...caches?.thank };
         this.detail     = { ...this.detail, ...caches?.detail };
+        this.data       = { ...this.data, ...caches?.data };
     }
 
     write( code ) {
@@ -53,6 +57,7 @@ class Cache {
                 source     : { ...this.source },
                 thank      : { ...this.thank },
                 detail     : { ...this.detail },
+                data       : { ...this.data },
             }));
 
             Log('write cache');

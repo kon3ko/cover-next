@@ -57,14 +57,14 @@ class Download {
             Log('set downloaded and cache');
         }
 
-        $(html).on('click', 'a[title="Download this file"]', ()=>{
-                Log('Click Download');
-                Log('set downloaded...');
+        $(html).on('click', 'a[title="Download this file"]', () => {
+            Log('Click Download');
+            Log('set downloaded...');
 
-                Cache.set({ key : 'downloaded', data : { key : detail.id, value : Cache.timestamp() } });
+            Cache.set({ key : 'downloaded', data : { key : detail.id, value : Cache.timestamp() } });
 
-                Log('set downloaded and cache');
-                Log('Done');
+            Log('set downloaded and cache');
+            Log('Done');
         });
 
         Log('Done');

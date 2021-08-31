@@ -11,15 +11,22 @@ import Clean from "./modules/clean";
 import Album from "./modules/album";
 import Detail from "./modules/detail";
 import './template';
+import Auth from "./modules/auth";
+import DownloadFinish from "./modules/download-finish";
 
 //setting
 Setting.load();
+
+//Auth
+const auth = new Auth();
 
 //working
 if ([
     '/viewno18.php',
     '/viewbr.php',
     '/upfinish.php',
+    '/viewno18sb.php',
+    '/viewbrsb.php',
 ].includes(window.location.pathname)) {
     let tr   = $('.mainouter center>table[width=\'100%\'] tr');
     let head = new Head({ element : tr.get(0), itemLength : tr.length });
@@ -74,26 +81,6 @@ if ([
     if (Setting.album === true) {
         new Album({ rows });
     }
-
-    //hook every details
-    if (Setting.downloadedHook === true) {
-        rows.map(async ( { data } ) => {
-            let detail = new Detail({
-                html     : null,
-                location : data.detailLink
-            });
-
-            //skip when have cache in 10 min
-            if (Cache.detail[ detail.id ] && Cache.detail[ detail.id ] + Setting.cacheDownloadedHookTimeout > Cache.timestamp()) {
-                return;
-            }
-
-            await data.hook.detail();
-
-            //cache detail
-            Cache.set({ key : 'detail', data : { key : detail.id, value : Cache.timestamp() } });
-        });
-    }
 }
 //detail
 if (window.location.pathname === '/details.php') {
@@ -120,4 +107,15 @@ if (window.location.pathname === '/details.php') {
 
     //clean
     let clean = new Clean({ element : detail.table });
+}
+
+//download finish
+if (window.location.pathname === '/downfinish.php') {
+    let downloadFinish = new DownloadFinish({ auth : auth });
+    downloadFinish.passData({ html : document.body });
+} else {
+    if (Setting.downloadFinish === true) {
+        let downloadFinish = new DownloadFinish({ auth : auth });
+        downloadFinish.init();
+    }
 }
