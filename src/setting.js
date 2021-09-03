@@ -64,7 +64,6 @@ class Setting {
 
         //plugin version
         try {
-            console.log(GM_info.script.version);
             Setting.version = GM_info.script.version;
         } catch (e) {
         }
