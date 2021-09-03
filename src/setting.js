@@ -2,10 +2,11 @@ import Log from "./modules/log";
 import Serial from "./modules/serial";
 import {Fancybox} from "@fancyapps/ui";
 import category from "./category";
+import Cache from "./modules/cache";
 
 class Setting {
     static key                            = 'COVER_NEXT';
-    static version                        = '1.20';
+    static version                        = null;
     static serial                         = '';
     static cache                          = true;
     static cacheTimeout                   = 604800;
@@ -60,8 +61,22 @@ class Setting {
 
         //donate version
         Setting.donateVersion();
+
+        //plugin version
+        try {
+            console.log(GM_info.script.version);
+            Setting.version = GM_info.script.version;
+        } catch (e) {
+        }
+
         //panel
         Setting.panel();
+    }
+
+    static loadDefault() {
+        localStorage.setItem(`${this.key}_SETTING`, JSON.stringify({
+            serial : Setting.serial
+        }));
     }
 
     static array() {
@@ -283,6 +298,19 @@ class Setting {
             Setting.donateVersion();
             Setting.save();
             alert('บันทึกการตั้งค่าเรียบร้อยแล้ว กรุณารีโหลดหน้าเว็บใหม่อีกครั้ง');
+        })).append($('<button>', { type : 'button', text : 'คืนค่าเดิม', style : 'margin-left:10px;' }).click(() => {
+            if (confirm('คุณแน่ใจว่าต้องการคืนค่าตั้งค่าเป็นค่าเริ่มต้นและล้างแคชด้วย?')) {
+                Setting.loadDefault();
+                Cache.clean();
+                alert('คืนค่าและล้างแคชเรียบร้อยแล้ว ระบบจะรีเฟรสหน้าเว็บใหม่อีกครั้ง');
+                window.location.reload();
+            }
+        })).append($('<button>', { type : 'button', text : 'ล้างแคช', style : 'margin-left:10px;' }).click(() => {
+            if (confirm('คุณแน่ใจว่าต้องการล้างแคช?')) {
+                Cache.clean();
+                alert('ล้างแคชเรียบร้อยแล้ว ระบบจะรีเฟรสหน้าเว็บใหม่อีกครั้ง');
+                window.location.reload();
+            }
         }));
 
         // new Fancybox([{ src : '#setting-panel', type : 'inline' }]);

@@ -81,6 +81,12 @@ if ([
     if (Setting.album === true) {
         new Album({ rows });
     }
+
+    //download finish
+    if (Setting.downloadFinish === true) {
+        let downloadFinish = new DownloadFinish({ auth : auth });
+        downloadFinish.init({ rows });
+    }
 }
 //detail
 if (window.location.pathname === '/details.php') {
@@ -110,12 +116,9 @@ if (window.location.pathname === '/details.php') {
 }
 
 //download finish
-if (window.location.pathname === '/downfinish.php') {
-    let downloadFinish = new DownloadFinish({ auth : auth });
-    downloadFinish.passData({ html : document.body });
-} else {
-    if (Setting.downloadFinish === true) {
+if (Setting.downloadFinish === true) {
+    if (window.location.pathname === '/downfinish.php') {
         let downloadFinish = new DownloadFinish({ auth : auth });
-        downloadFinish.init();
+        downloadFinish.passData({ html : document.body });
     }
 }

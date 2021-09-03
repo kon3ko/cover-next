@@ -2,17 +2,20 @@ import Log from "./log";
 import Cache from "../cache";
 import Setting from "../setting";
 import Hash from "hash.js";
+import Download from "./download";
 
 class DownloadFinish {
     auth;
     maxLoop = 100;
+    rows;
 
     constructor( { auth } ) {
         this.auth = auth;
         Log('Download Finish');
     }
 
-    init() {
+    init( { rows } ) {
+        this.rows = Array.isArray(rows) ? rows : [];
         this.historical().then(r => {
             Log('download finish historical success');
             this.sync().then(r => Log('download finish sync success'));
@@ -34,7 +37,7 @@ class DownloadFinish {
             loop++;
             Log('loop: ' + loop);
 
-            let html = await this.data({ page : loop });
+            let html = await this.data({ page : loop - 1 });
             let data = this.passData({ html : html });
 
             Log('newest: ' + new Date(data.newest * 1000));
@@ -58,7 +61,7 @@ class DownloadFinish {
                 loop++;
                 Log('loop: ' + loop);
 
-                let html = await this.data({ page : loop });
+                let html = await this.data({ page : loop - 1 });
                 let data = this.passData({ html : html });
 
                 Log('oldest: ' + new Date(data.oldest * 1000));
@@ -147,7 +150,13 @@ class DownloadFinish {
                 Log(datum.id, `hash: ${datum.hash}`);
 
                 //cache downloaded
-                this.cache({ id : datum.id, timestamp : datum.timestamp });
+
+                let row = this.rows.find(element => element.data.detailId === datum.id);
+                if (row) {
+                    this.downloaded({ data : row.data });
+                } else {
+                    this.downloaded({ id : datum.id, timestamp : datum.timestamp });
+                }
 
                 data.items.push(datum);
             }
@@ -171,12 +180,23 @@ class DownloadFinish {
         Log('set download finish oldest: ' + oldest + '( ' + new Date(oldest * 1000) + ')');
     }
 
-    cache( { id, timestamp } ) {
-        //set cache downloaded
-        Cache.set({ key : 'downloaded', data : { key : id, value : timestamp } });
+    downloaded( { data, id, timestamp } ) {
+        if (data !== undefined) {
+            Download.downloaded({ data });
+        } else {
+            //set cache downloaded
+            Cache.set({ key : 'downloaded', data : { key : id, value : timestamp } });
 
-        Log('set downloaded and cache ' + id);
+            Log('set downloaded and cache ' + id);
+        }
     }
+
+    // cache( { id, timestamp } ) {
+    //     //set cache downloaded
+    //     Cache.set({ key : 'downloaded', data : { key : id, value : timestamp } });
+    //
+    //     Log('set downloaded and cache ' + id);
+    // }
 
 }
 

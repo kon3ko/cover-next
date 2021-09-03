@@ -82,6 +82,10 @@ class Cache {
         return (Date.now() / 1000 | 0);
     }
 
+    static clean() {
+        localStorage.setItem(`${Setting.key}_CACHE`,'{}');
+    }
+
 }
 
 export default Cache;
