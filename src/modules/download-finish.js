@@ -190,14 +190,6 @@ class DownloadFinish {
             Log('set downloaded and cache ' + id);
         }
     }
-
-    // cache( { id, timestamp } ) {
-    //     //set cache downloaded
-    //     Cache.set({ key : 'downloaded', data : { key : id, value : timestamp } });
-    //
-    //     Log('set downloaded and cache ' + id);
-    // }
-
 }
 
 export default DownloadFinish;

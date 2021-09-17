@@ -78,7 +78,8 @@ class PassData {
         this.detailId   = /id=([0-9]+)/.exec(this.detailLink)[ 1 ];
 
         //download
-        this.download = $('td[width="900"] a>img[src="pic/downloaded.gif"]', this.element).parent()?.attr('href');
+        this.elements.download = $('td[width="900"] a>img[src="pic/downloaded.gif"]', this.element).parent();
+        this.download = this.elements.download?.attr('href');
 
         //category
         this.category = $('img', this.td.get(0)).first()?.attr('src').replace('pic/categories/cat-', '')

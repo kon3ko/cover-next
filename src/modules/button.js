@@ -2,6 +2,7 @@ import Download from "./download";
 import {Fancybox} from "@fancyapps/ui";
 import de from "@fancyapps/ui/src/Fancybox/l10n/de";
 import Setting from "../setting";
+import Log from "./log";
 
 class Button {
     download    = $('<button>', { class : 'minimal' });
@@ -14,6 +15,9 @@ class Button {
     constructor( { data, cover } ) {
         this.data  = data;
         this.cover = cover;
+
+        //btn vip click
+        this.btnVIP();
 
         if (Setting.expandButton === false) return;
 
@@ -37,6 +41,16 @@ class Button {
 
         //zoom
         this.btnZoom();
+    }
+
+    btnVIP() {
+        if (this.data.elements.download) {
+            this.data.elements.download.click(() => {
+                Log(this.data.hash, `vip download click`);
+
+                Download.downloaded({ data : this.data });
+            });
+        }
     }
 
     btnDescription() {
