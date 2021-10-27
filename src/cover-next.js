@@ -13,9 +13,13 @@ import Detail from "./modules/detail";
 import './template';
 import Auth from "./modules/auth";
 import DownloadFinish from "./modules/download-finish";
+import StatusBar from "./status-bar";
 
 //setting
 Setting.load();
+
+//status bar
+StatusBar.make();
 
 //Auth
 const auth = new Auth();
@@ -88,6 +92,7 @@ if ([
         downloadFinish.init({ rows });
     }
 }
+
 //detail
 if (window.location.pathname === '/details.php') {
     let detail = new Detail({
@@ -118,7 +123,7 @@ if (window.location.pathname === '/details.php') {
 //download finish
 if (Setting.downloadFinish === true) {
     if (window.location.pathname === '/downfinish.php') {
-        let downloadFinish = new DownloadFinish({ auth : auth });
+        let downloadFinish = new DownloadFinish({ auth : auth ,statusBar : statusBar});
         downloadFinish.passData({ html : document.body });
     }
 }

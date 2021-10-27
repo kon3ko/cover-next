@@ -238,6 +238,7 @@
     background: #e7ecff;
     border-radius: 6px;
     border: 2px solid #000000a1;
+    z-index: 20;
 
     img {
         width: 35px;
@@ -314,4 +315,17 @@
             }
         }
     }
+}
+
+.status-bar{
+    position: fixed;
+    top: 0;
+    height: 20px;
+    background: #fff;
+    width: 100%;
+    margin: 0 -8px;
+    padding:2px 10px;
+    font-size: 10pt;
+    display: none;
+    opacity: 0.9;
 }

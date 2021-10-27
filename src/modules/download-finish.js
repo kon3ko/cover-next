@@ -3,6 +3,7 @@ import Cache from "../cache";
 import Setting from "../setting";
 import Hash from "hash.js";
 import Download from "./download";
+import StatusBar from "../status-bar";
 
 class DownloadFinish {
     auth;
@@ -36,6 +37,7 @@ class DownloadFinish {
         do {
             loop++;
             Log('loop: ' + loop);
+            StatusBar.show('กำลังซิงค์ข้อมูลที่ดาวน์โหลดไปแล้ว #' + loop);
 
             let html = await this.data({ page : loop - 1 });
             let data = this.passData({ html : html });
@@ -49,6 +51,8 @@ class DownloadFinish {
             Log('found: ' + (found !== undefined ? 'true' : 'false'));
         } while (found === undefined && loop < this.maxLoop);
 
+        StatusBar.show(`ซิงค์ข้อมูลที่เคยดาวน์โหลดเรียบร้อยแล้ว (ทุก ๆ ${Setting.downloadFinishCacheTimeout / 60} นาที)`,'#089d1a');
+
         //cache
         Cache.set({ key : 'data', data : { key : 'downloadFinishTimeout', value : Cache.timestamp() } });
     }
@@ -61,6 +65,8 @@ class DownloadFinish {
                 loop++;
                 Log('loop: ' + loop);
 
+                StatusBar.show('กำลังโหลดข้อมูลที่ดาวน์โหลดไปแล้ว #' + loop);
+
                 let html = await this.data({ page : loop - 1 });
                 let data = this.passData({ html : html });
 
@@ -72,6 +78,8 @@ class DownloadFinish {
                     Setting.downloadFinishOldestAt === 0
                 ) && loop < this.maxLoop
                 );
+
+            StatusBar.show(`โหลดข้อมูลที่เคยดาวน์โหลดเรียบร้อยแล้ว`,'#089d1a');
 
             Setting.downloadFinishHistoricalWorked = true;
             Setting.save();
