@@ -7,7 +7,8 @@ class Cache {
     thank      = {};
     detail     = {};
     data       = {
-        downloadFinishTimeout : 0
+        downloadFinishTimeout : 0,
+        welcomeMessage        : 0,
     };
     code;
 
@@ -83,7 +84,7 @@ class Cache {
     }
 
     static clean() {
-        localStorage.setItem(`${Setting.key}_CACHE`,'{}');
+        localStorage.setItem(`${Setting.key}_CACHE`, '{}');
     }
 
 }

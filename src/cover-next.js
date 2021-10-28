@@ -19,7 +19,7 @@ import StatusBar from "./status-bar";
 Setting.load();
 
 //status bar
-StatusBar.make();
+StatusBar.make(Cache,`คุณกำลังใช้ Covernext v${Setting.version} ปลั๊กอินสำหรับ Siambit คุณสามารถตั้งค่าได้ที่ฟันเฟืองมุมล่างขวามือ :)`);
 
 //Auth
 const auth = new Auth();

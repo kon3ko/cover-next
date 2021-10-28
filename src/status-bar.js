@@ -4,8 +4,19 @@ class StatusBar {
     static timeoutBar = 10; //seconds
     static code;
 
-    static make() {
+    static make( cache, message ) {
         this.panel();
+
+        if(cache.data.welcomeMessage - cache.timestamp()  < 0){
+            this.show(message, '#11324D');
+            const timeout = cache.set({
+                key : 'data',
+                data : {
+                    key : 'welcomeMessage',
+                    value : cache.timestamp() + 3600
+                }
+            });
+        }
     }
 
     static show( message, color ) {
@@ -26,7 +37,7 @@ class StatusBar {
     static hidePanel() {
         const rand = Math.random();
         this.code  = rand;
-        let hide = ( code ) => {
+        let hide   = ( code ) => {
             if (this.code === code) {
                 this.element.slideUp();
                 this.statusShow = false;
