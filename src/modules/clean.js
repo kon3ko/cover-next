@@ -22,6 +22,18 @@ class Clean {
                 banner.next().remove();
                 banner.remove();
             }
+
+            //remove Advertising
+            $('td.outer table[width="80%"] td.rowhead').each(function( index, item ){
+                let text = $(item).html().trim();
+                if(text === 'Advertising' || text === 'Advertising<br>'){
+                   $('td.rowhead', element).each(function( tdIndex, tdItem ){
+                       if(tdIndex === index){
+                           $(tdItem).parent().remove();
+                       }
+                   });
+                }
+            })
         }
 
         if (Setting.cleanDetailDownloadImage) {
