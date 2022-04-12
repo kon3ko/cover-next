@@ -179,8 +179,8 @@ class Setting {
 <div class="form-group">
 <label >ดาวน์โหลดด้วยปุ่ม VIP</label><br>
   <div class="form-input">
-        <input type="radio" name="downloadWithoutVip" value="on"> <span class="green">เปิด</span> 
-        <input type="radio" name="downloadWithoutVip" value="off"> <span class="red">ปิด</span>
+        <input type="radio" name="downloadWithoutVip" value="off"> <span class="green">เปิด</span> 
+        <input type="radio" name="downloadWithoutVip" value="on"> <span class="red">ปิด</span>
     </div>
   <span>เฉพาะสมาชิกที่เป็น VIP เท่านั้น</span>
 </div>
