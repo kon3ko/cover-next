@@ -160,13 +160,13 @@ class Setting {
     </div>
 </div>
 
-<div class="form-group">
-<label >ขอบคุณอัตโนมัติ (หน้ารายการ)</label><br>
-  <div class="form-input">
-        <input type="radio" name="autoThankHook" value="on"> <span class="green">เปิด</span> 
-        <input type="radio" name="autoThankHook" value="off"> <span class="red">ปิด</span>
-    </div>
-</div>
+<!--<div class="form-group">-->
+<!--<label >ขอบคุณอัตโนมัติ (หน้ารายการ)</label><br>-->
+<!--  <div class="form-input">-->
+<!--        <input type="radio" name="autoThankHook" value="on"> <span class="green">เปิด</span> -->
+<!--        <input type="radio" name="autoThankHook" value="off"> <span class="red">ปิด</span>-->
+<!--    </div>-->
+<!--</div>-->
 
 <div class="form-group">
 <label >ขอบคุณอัตโนมัติ (หน้ารายละเอียด)</label><br>

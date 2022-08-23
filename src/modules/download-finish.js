@@ -28,7 +28,7 @@ class DownloadFinish {
 
         //check cache
         if (Cache.data.downloadFinishTimeout >= (Cache.timestamp() - Setting.downloadFinishCacheTimeout)) {
-            Log(`skip, wait ${Setting.downloadFinishCacheTimeout} seconds!`);
+            Log(`skip, wait ${Setting.downloadFinishCacheTimeout - (Cache.timestamp() - Cache.data.downloadFinishTimeout)} seconds!`);
             return;
         }
 

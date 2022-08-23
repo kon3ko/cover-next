@@ -3,13 +3,17 @@ import Setting from "../setting";
 class Clean {
 
     constructor( { element } ) {
+        //detail
+        this.detail(element);
+
         //logo
+        Clean.logo();
+    }
+
+    static logo(){
         if (Setting.cleanLogo) {
             $('img[src="include/logo_siambit.gif"]').remove();
         }
-
-        //detail
-        this.detail(element);
     }
 
     detail( element ) {
