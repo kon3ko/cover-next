@@ -96,6 +96,9 @@ class PassData {
 
         //background color
         this.bgColor = $(this.td.get(0)).attr('bgcolor');
+        if(!/^#[0-9A-F]{6}$/i.test(this.bgColor)){
+            this.bgColor = '';
+        }
 
         //except category or locked
         this.except = Setting.exceptCategories.includes(this.category) || this.locked;

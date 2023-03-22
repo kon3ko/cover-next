@@ -72,6 +72,12 @@ if ([
         //downloaded
         if (Cache.downloaded[ data.detailId ] !== undefined) Download.downloaded({ data });
 
+        //remove bg first column
+        const columnColor = $(data.td.get(0)).attr('bgcolor');
+        if(!/^#[0-9A-F]{6}$/i.test(columnColor)) {
+            $(data.td.get(0)).attr('bgcolor', '');
+        }
+
         //row
         rows.push({
             data   : data,
