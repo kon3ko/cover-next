@@ -69,16 +69,18 @@ class Thank {
 
         if (a) {
             const onclick = a.attr('onclick');
-            const id   = onclick.match(/sndReq\('action=say_thanks&id=(\d+)'/);
-            $.ajax({
-                url: '/ajax.php',
-                type: 'GET',
-                data: 'action=say_thanks&id=' + id[1],
-                success: function (data) {
-                    Log('send thank success.');
-                    $('#saythanks').html(data);
-                }
-            });
+            if(onclick){
+                const id   = onclick.match(/sndReq\('action=say_thanks&id=(\d+)'/);
+                $.ajax({
+                    url: '/ajax.php',
+                    type: 'GET',
+                    data: 'action=say_thanks&id=' + id[1],
+                    success: function (data) {
+                        Log('send thank success.');
+                        $('#saythanks').html(data);
+                    }
+                });
+            }
         }
 
         Log('Done');
