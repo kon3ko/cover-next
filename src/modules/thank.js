@@ -83,6 +83,15 @@ class Thank {
             }
         }
 
+        //remove text thanks
+        $('td.outer table[width="80%"] td.rowhead').each(function( index, item ){
+            let text = $(item).html().trim();
+            if(text === '<font color="black">ต้องการกด Thanks <br>กรุณาเลื่อนลงไปด้านล่าง<br>หรือคลิกที่ปุ่ม Download <br>จะมีหน้าให้กด' +
+                ' Thanks เช่นกัน</font>'){
+                $(item).html('<font color="#D91BEA">Download</font>');
+            }
+        });
+
         Log('Done');
     }
 }

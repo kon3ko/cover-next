@@ -37,6 +37,15 @@ class Clean {
                        }
                    });
                 }
+                if(text === 'ScreenShot'){
+                    const trLeft = $('td[align="left"]', $(item).parent());
+                    const a = $('a', trLeft);
+
+                    if(a.length === 2){
+                        a.eq(0).remove();
+                        $('br', trLeft).remove();
+                    }
+                }
             })
         }
 
