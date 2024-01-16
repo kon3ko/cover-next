@@ -27,4 +27,4 @@
 
 
 2. ติดตั้งปลั๊กอิน Cover Next 
-    [คลิกที่นี่เพื่อติดตั้ง](https://raw.githubusercontent.com/kon3ko/cover-next/master/cover-next.user.js)
+    [คลิกที่นี่เพื่อติดตั้ง](https://raw.githubusercontent.com/nutpaker/cover-next/master/cover-next.user.js)

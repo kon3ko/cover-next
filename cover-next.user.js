@@ -31,9 +31,9 @@
 // @match        https://siambit.io/details.php*
 // @grant        GM_addStyle
 // @grant        GM_xmlhttpRequest
-// @require      https://raw.githubusercontent.com/kon3ko/cover-next/master/dist/cover-next.js?version=1.40
-// @updateURL    https://raw.githubusercontent.com/kon3ko/cover-next/master/cover-next.user.js
-// @downloadURL  https://raw.githubusercontent.com/kon3ko/cover-next/master/cover-next.user.js
+// @require      https://raw.githubusercontent.com/nutpaker/cover-next/master/dist/cover-next.js?version=1.40
+// @updateURL    https://raw.githubusercontent.com/nutpaker/cover-next/master/cover-next.user.js
+// @downloadURL  https://raw.githubusercontent.com/nutpaker/cover-next/master/cover-next.user.js
 // @supportURL   https://github.com/kon3ko/cover-next/issues
 // @connect      img.in.th
 // @connect      bpicc.cc
