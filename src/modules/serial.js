@@ -1,17 +1,19 @@
 import CryptoJS from "crypto-js";
-import Setting from "../setting";
 
 class Serial {
     static check() {
+        // ByPass
         let uNsEeKrO = $((new Serial).data()).attr({ '\x64\x61\x74\x61\x2d\x78' : '\x79' }).text();
-        let data     = { t : 0 };
-        try {
-            data = CryptoJS.AES.decrypt(Setting.serial, uNsEeKrO).toString(CryptoJS.enc.Utf8);
-            data = JSON.parse(data);
-        } catch {
-        }
+        return uNsEeKrO;
 
-        return Date.now() / 1000 < data.t ? data?.u : null;
+        // let data     = { t : 0 };
+        // try {
+        //     data = CryptoJS.AES.decrypt(Setting.serial, uNsEeKrO).toString(CryptoJS.enc.Utf8);
+        //     data = JSON.parse(data);
+        // } catch {
+        // }
+
+        // return Date.now() / 1000 < data.t ? data?.u : null;
     }
 
     data() {

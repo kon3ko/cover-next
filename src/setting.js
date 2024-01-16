@@ -121,7 +121,7 @@ class Setting {
         });
         $('.setting-panel').html(`<div id="setting-panel">
 <h3>Cover Next</h3>
-<h5>Version: ${Setting.version}</h5>
+<h5>Version: ${Setting.version} ByPass <a href='https://siambit.io/userdetails.php?id=711433'>สาธุ99</a></h5>
 <h5>Github: <a href="https://github.com/kon3ko/cover-next" target="_blank">https://github.com/kon3ko/cover-next</a></h5>
 <h5>Donate, Report: <a href="https://m.me/100001345584902" target="_blank">https://m.me/100001345584902</a></h5>
 <br>
