@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Cover Next (Siambit)
 // @namespace    http://tampermonkey.net/
-// @version      1.40
+// @version      1.4.1
 // @description  tools that will help you see new items and make it easier for you to use the website to load bittorrent.
 // @author       NEKO
 // @icon         https://i.imgur.com/qTvfJSr.png
@@ -29,6 +29,18 @@
 // @match        https://siambit.io/upfinish.php*
 // @match        https://siambit.io/downfinish.php*
 // @match        https://siambit.io/details.php*
+// @match        https://thaibit.net
+// @match        https://thaibit.net/index.php*
+// @match        https://thaibit.net/viewno18.php*
+// @match        https://thaibit.net/viewbr.php*
+// @match        https://thaibit.net/viewno18sb.php*
+// @match        https://thaibit.net/viewbrsb.php*
+// @match        https://thaibit.net/torrent_day.php*
+// @match        https://thaibit.net/torrent_week.php*
+// @match        https://thaibit.net/torrent_month.php*
+// @match        https://thaibit.net/upfinish.php*
+// @match        https://thaibit.net/downfinish.php*
+// @match        https://thaibit.net/details.php*
 // @grant        GM_addStyle
 // @grant        GM_xmlhttpRequest
 // @require      https://raw.githubusercontent.com/nutpaker/cover-next/master/dist/cover-next.js?version=1.40
