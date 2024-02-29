@@ -5,15 +5,6 @@ class Clean {
     constructor( { element } ) {
         //detail
         this.detail(element);
-
-        //logo
-        Clean.logo();
-    }
-
-    static logo(){
-        if (Setting.cleanLogo) {
-            $('img[src="include/logo_siambit.gif"]').remove();
-        }
     }
 
     detail( element ) {
@@ -47,6 +38,11 @@ class Clean {
                     }
                 }
             })
+        }
+
+        //remove br in column download when bookmark and promote is removed
+        if (Setting.cleanDetailBookmarks && Setting.cleanDetailPromote){
+            $('br', $('tbody>tr:eq(0)>td:eq(1)', element)).remove();
         }
 
         if (Setting.cleanDetailDownloadImage) {

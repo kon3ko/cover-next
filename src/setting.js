@@ -29,18 +29,18 @@ class Setting {
     static cacheDownloadedHookTimeout     = 21600;
     static downloadFinish                 = true; //Donate Version
     static downloadFinishCacheTimeout     = 300;
-    static downloadFinishNewestHash       = null;
+    static downloadFinishNewestHash          = null;
     static downloadFinishOldestAt         = 0;
     static downloadFinishNewestAt         = 0;
     static downloadFinishHistoricalDays   = 30;
     static downloadFinishHistoricalWorked = false;
     static downloadWithoutVip             = false;
     static fixImageOverScreen             = true;
-    static cleanLogo                      = true;
     static cleanDetailBanner              = true; //Donate Version
     static cleanDetailDownloadImage       = true;
     static cleanDetailBookmarks           = true;
     static cleanDetailPromote             = true;
+    static fontSize                           = null;
 
     static load() {
         Log('Load setting');
@@ -212,14 +212,6 @@ class Setting {
   <span>รายการที่ดาวน์โหลดไปแล้ว (ดึงย้อนหลังแค่ 30 วัน ไม่เกิน 100 หน้า)</span>
 </div>
 
-<div class="form-group">
-<label >ลบโลโก้ด้านบน</label><br>
-  <div class="form-input">
-        <input type="radio" name="cleanLogo" value="on"> <span class="green">เปิด</span> 
-        <input type="radio" name="cleanLogo" value="off"> <span class="red">ปิด</span>
-    </div>
-</div>
-
 <div class="form-group donate">
 <label class="donate">[Donate Version] ลบโฆษณา</label><br>
   <div class="form-input">
@@ -256,6 +248,21 @@ class Setting {
   <span>ทำงานเฉพาะในหน้ารายละเอียด</span>
 </div>
 
+<div class="form-group">
+<label >เปลี่ยนขนาดตัวอักษรของเว็บ (Font)</label><br>
+  <div class="form-input">
+        <select name="fontSize">
+            <option value="default">ขนาดเท่าเดิม</option>
+            ${[...Array(10).keys()].map(item => {
+                item += 7;
+                return `<option value="${item}">${item}</option>` 
+                     + `<option value="${item}.5">${item}.5</option>`;
+            })}
+        </select>
+    </div>
+  <span>ไม่แสดงภาพหน้าปกหมวดหมู่ที่เลือก, กด Ctrl ค้างไว้เพื่อเลือกมากกว่า 1 ตัวเลือก</span>
+</div>
+
 <div class="form-group donate">
 <label class="donate">[Donate Version] หมวดหมู่ที่ยกเว้น</label><br>
   <div class="form-input">
@@ -290,6 +297,11 @@ class Setting {
                 Setting[ _input.attr('name') ] = $(input).val();
             });
             //select
+            $('#form-setting select').each(( index, input ) => {
+                let _input                     = $(input);
+                Setting[ _input.attr('name') ] = $(input).val();
+            });
+            //select multiple
             $('#form-setting select[multiple]').each(( index, input ) => {
                 let _input                     = $(input);
                 Setting[ _input.attr('name') ] = $(input).val();
@@ -336,6 +348,12 @@ class Setting {
                 if (_input && _input.length === 1) {
                     _input.val(Setting[ item ]);
                 }
+            }
+
+            //for select
+            if (item === 'fontSize') {
+                console.log(1111);
+                $(`select[name=${item}]`).val(Setting[ item ]);
             }
         });
     }

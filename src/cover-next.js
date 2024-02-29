@@ -10,6 +10,7 @@ import Thank from "./modules/thank";
 import Clean from "./modules/clean";
 import Album from "./modules/album";
 import Detail from "./modules/detail";
+import Boot from "./modules/boot";
 import './template';
 import Auth from "./modules/auth";
 import DownloadFinish from "./modules/download-finish";
@@ -17,6 +18,9 @@ import StatusBar from "./status-bar";
 
 //setting
 Setting.load();
+
+//Boot
+const boot = new Boot();
 
 //status bar
 StatusBar.make(Cache,`คุณกำลังใช้ Covernext v${Setting.version} ปลั๊กอินสำหรับ Siambit คุณสามารถตั้งค่าได้ที่ฟันเฟืองมุมล่างขวามือ :)`);
@@ -32,7 +36,7 @@ if ([
     '/viewno18sb.php',
     '/viewbrsb.php',
 ].includes(window.location.pathname)) {
-    let tr   = $('.mainouter center>table[width=\'100%\'] tr');
+    let tr   = $('table.mainouter>tbody>tr>td[align="center"]>table[width="100%"]>tbody>tr');
     let head = new Head({ element : tr.get(0), itemLength : tr.length });
     let rows = [];
 
@@ -136,3 +140,4 @@ if (Setting.downloadFinish === true) {
         downloadFinish.passData({ html : document.body });
     }
 }
+
