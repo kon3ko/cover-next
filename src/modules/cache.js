@@ -9,6 +9,7 @@ class Cache {
     data       = {
         downloadFinishTimeout : 0,
         welcomeMessage        : 0,
+        warning               : 0,
     };
     code;
 

@@ -352,7 +352,6 @@ class Setting {
 
             //for select
             if (item === 'fontSize') {
-                console.log(1111);
                 $(`select[name=${item}]`).val(Setting[ item ]);
             }
         });

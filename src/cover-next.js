@@ -15,6 +15,7 @@ import './template';
 import Auth from "./modules/auth";
 import DownloadFinish from "./modules/download-finish";
 import StatusBar from "./status-bar";
+import Warning from "./warning";
 
 //setting
 Setting.load();
@@ -23,10 +24,13 @@ Setting.load();
 const boot = new Boot();
 
 //status bar
-StatusBar.make(Cache,`คุณกำลังใช้ Covernext v${Setting.version} ปลั๊กอินสำหรับ Siambit คุณสามารถตั้งค่าได้ที่ฟันเฟืองมุมล่างขวามือ :)`);
+StatusBar.make(Cache,`คุณกำลังใช้ Covernext v${Setting.version} ปลั๊กอินสำหรับ BearBit คุณสามารถตั้งค่าได้ที่ฟันเฟืองมุมล่างขวามือ :)`);
 
 //Auth
 const auth = new Auth();
+
+//warning
+Warning.make(Cache);
 
 //working
 if ([
@@ -64,7 +68,13 @@ if ([
 
         //add column cover
         if (Setting.preview === true) {
-            $(data.td.get(0)).after(cover.html);
+            if('/viewno18sb.php' === window.location.pathname){
+                if(auth.isPremium === true) {
+                    $(data.td.get(0)).after(cover.html);
+                }
+            }else{
+                $(data.td.get(0)).after(cover.html);
+            }
         }
 
         //button
@@ -101,9 +111,6 @@ if ([
         let downloadFinish = new DownloadFinish({ auth : auth });
         downloadFinish.init({ rows });
     }
-
-    //clean logo
-    Clean.logo();
 }
 
 //detail

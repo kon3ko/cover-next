@@ -334,3 +334,26 @@
     display: none;
     opacity: 0.9;
 }
+
+.warning{
+    width: 400px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #b8d3ac;
+    padding: 15px;
+    border-radius: 3px;
+    font-size: 9pt;
+    line-height: 1.5;
+    box-shadow: 5px 10px;
+
+    h5{
+        margin: 0;
+        font-size: 10pt;
+    }
+
+    >div{
+        margin-top: 5px;
+    }
+}
