@@ -30,7 +30,7 @@ StatusBar.make(Cache,`คุณกำลังใช้ Covernext v${Setting.ver
 const auth = new Auth();
 
 //warning
-Warning.make(Cache);
+//Warning.make(Cache);
 
 //working
 if ([
@@ -68,13 +68,7 @@ if ([
 
         //add column cover
         if (Setting.preview === true) {
-            if('/viewno18sb.php' === window.location.pathname){
-                if(auth.isPremium === true) {
-                    $(data.td.get(0)).after(cover.html);
-                }
-            }else{
-                $(data.td.get(0)).after(cover.html);
-            }
+            $(data.td.get(0)).after(cover.html);
         }
 
         //button
