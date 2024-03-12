@@ -2,6 +2,7 @@ import Log from "./log";
 import Setting from "../setting";
 
 class Head {
+    auth;
     element;
     size;
     downloaded;
@@ -13,7 +14,8 @@ class Head {
         template : $("<span>", { title : 'Direct source status.' })
     };
 
-    constructor( { element, itemLength } ) {
+    constructor( { element, itemLength, auth } ) {
+        this.auth         = auth;
         this.element         = element;
         this.progressBar.all = itemLength - 1;
 
@@ -31,14 +33,25 @@ class Head {
 
         //add column
         if(Setting.preview === true){
-            $(td.get(0)).after(
-                $("<td>", {
-                    class : 'colhead 11',
-                    align : 'center',
-                    width : '125px',
-                    text  : "รูป"
-                }).append(this.progressBar.template)
-            );
+            let addColumn = false;
+            if('/viewno18sb.php' === window.location.pathname || '/viewbrsb.php' === window.location.pathname){
+                if(this.auth.isPremium === true) {
+                    addColumn = true;
+                }
+            }else{
+                addColumn = true;
+            }
+
+            if(addColumn){
+                $(td.get(0)).after(
+                    $("<td>", {
+                        class : 'colhead 11',
+                        align : 'center',
+                        width : '125px',
+                        text  : "รูป"
+                    }).append(this.progressBar.template)
+                );
+            }
         }
 
         //touch first

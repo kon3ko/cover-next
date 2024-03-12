@@ -4,8 +4,8 @@ import Cover from "./modules/cover";
 import Button from "./modules/button";
 import Download from "./modules/download";
 import HookDetail from "./modules/hook-detail";
-import Cache from "./cache";
 import Setting from "./setting";
+import Cache from "./cache";
 import Thank from "./modules/thank";
 import Clean from "./modules/clean";
 import Album from "./modules/album";
@@ -30,7 +30,7 @@ StatusBar.make(Cache,`คุณกำลังใช้ Covernext v${Setting.ver
 const auth = new Auth();
 
 //warning
-//Warning.make(Cache);
+Warning.make(Cache);
 
 //working
 if ([
@@ -41,7 +41,7 @@ if ([
     '/viewbrsb.php',
 ].includes(window.location.pathname)) {
     let tr   = $('table.mainouter>tbody>tr>td[align="center"]>table[width="100%"]>tbody>tr');
-    let head = new Head({ element : tr.get(0), itemLength : tr.length });
+    let head = new Head({ element : tr.get(0), itemLength : tr.length, auth: auth });
     let rows = [];
 
     //remove head row
@@ -68,7 +68,13 @@ if ([
 
         //add column cover
         if (Setting.preview === true) {
-            $(data.td.get(0)).after(cover.html);
+            if('/viewno18sb.php' === window.location.pathname || '/viewbrsb.php' === window.location.pathname){
+                if(auth.isPremium === true) {
+                    $(data.td.get(0)).after(cover.html);
+                }
+            }else{
+                $(data.td.get(0)).after(cover.html);
+            }
         }
 
         //button

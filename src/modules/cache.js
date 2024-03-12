@@ -12,6 +12,7 @@ class Cache {
         warning               : 0,
     };
     code;
+    version = 0;
 
     constructor() {
         Log('Cache loading...');
@@ -22,7 +23,13 @@ class Cache {
     }
 
     set( { key, data } ) {
-        this[ key ][ data.key ] = data.value;
+        console.log(key,data);
+        if(typeof data === 'object' && data.hasOwnProperty('key')){
+            this[ key ][ data.key ] = data.value;
+        }else{
+            this[ key ] = data;
+        }
+
         let rand                = Math.random();
         this.code               = rand;
         setTimeout(() => this.write(rand), 2000);
@@ -46,6 +53,20 @@ class Cache {
         this.thank      = { ...this.thank, ...caches?.thank };
         this.detail     = { ...this.detail, ...caches?.detail };
         this.data       = { ...this.data, ...caches?.data };
+        this.version    = caches?.version ?? 0;
+
+        //clean old cache
+        if(this.version !== Setting.version){
+            this.set({ key : 'data', data : {
+                    key : 'welcomeMessage',
+                    value : 0,
+                }});
+            this.set({ key : 'data', data : {
+                    key : 'warning',
+                    value : 0,
+                }});
+            this.set({ key : 'version', data : Setting.version });
+        }
     }
 
     write( code ) {
@@ -60,6 +81,7 @@ class Cache {
                 thank      : { ...this.thank },
                 detail     : { ...this.detail },
                 data       : { ...this.data },
+                version    : this.version,
             }));
 
             Log('write cache');

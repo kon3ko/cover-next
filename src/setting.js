@@ -6,7 +6,7 @@ import Cache from "./modules/cache";
 
 class Setting {
     static key                            = 'COVER_NEXT';
-    static version                        = null;
+    static version                        = GM_info.script.version ?? '1.00';
     static serial                         = '';
     static cache                          = true;
     static cacheTimeout                   = 604800;
