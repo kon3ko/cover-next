@@ -51,6 +51,14 @@ class StatusBar {
     static panel() {
         $('body').append($(`<div>`, { id : 'status-bar', class : 'status-bar' }));
     }
+
+    static bottom(message){
+        if($("#status-bar-bottom").length <= 0){
+            $('body').append($(`<div>`, { id : 'status-bar-bottom', class : 'status-bar-bottom' }));
+        }
+
+        $("#status-bar-bottom").html(`Cover Next: ` + message);
+    }
 }
 
 export default StatusBar;

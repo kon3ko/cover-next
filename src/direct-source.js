@@ -17,6 +17,8 @@ const domains = {
     'www.i-pic.info'     : 's:4',
     'img.thaibuzz.com'   : 's:5',
     'imgmak.com'         : 's:6',
+    'imagenetz.de'       : 's:7',
+    'www.imagenetz.de'   : 's:7',
     'www.imgbb.me'       : 'm:og:image',
     'imgbb.me'           : 'm:og:image',
     'www.picz.in.th'     : 'm:og:image',
@@ -85,6 +87,10 @@ const patterns = {
         attr     : 'src',
         selector : 'img#full_image',
     },
+    's:7'        : {
+        attr     : 'src',
+        selector : 'img.img-rounded.img-responsive',
+    },
     'm:og:image' : {
         attr     : 'content',
         selector : 'meta[property=\'og:image\']',
@@ -128,6 +134,6 @@ const patterns = {
     },
 };
 
-const directSource = new DirectSource(domains, patterns);
+// const directSource = new DirectSource(domains, patterns);
 
-export default directSource;
+export default { DirectSource, domains, patterns};

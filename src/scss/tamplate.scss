@@ -357,3 +357,15 @@
         margin-top: 5px;
     }
 }
+
+.status-bar-bottom {
+    position: fixed;
+    bottom: 0;
+    height: 20px;
+    background: #fff;
+    width: 100%;
+    margin: 0 -8px;
+    padding:5px 10px 2px;
+    font-size: 10pt;
+    opacity: 0.9;
+}

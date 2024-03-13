@@ -1,5 +1,6 @@
 import Log from "./log";
 import Setting from "../setting";
+import ServerCache from "./server-cache";
 
 class Head {
     auth;
@@ -32,26 +33,15 @@ class Head {
         Log('add column cover');
 
         //add column
-        if(Setting.preview === true){
-            let addColumn = false;
-            if('/viewno18sb.php' === window.location.pathname || '/viewbrsb.php' === window.location.pathname){
-                if(this.auth.isPremium === true) {
-                    addColumn = true;
-                }
-            }else{
-                addColumn = true;
-            }
-
-            if(addColumn){
-                $(td.get(0)).after(
-                    $("<td>", {
-                        class : 'colhead 11',
-                        align : 'center',
-                        width : '125px',
-                        text  : "รูป"
-                    }).append(this.progressBar.template)
-                );
-            }
+        if(Setting.preview === true && (auth.isPremium === true || ServerCache.status)){
+            $(td.get(0)).after(
+                $("<td>", {
+                    class : 'colhead 11',
+                    align : 'center',
+                    width : '125px',
+                    text  : "รูป"
+                }).append(this.progressBar.template)
+            );
         }
 
         //touch first

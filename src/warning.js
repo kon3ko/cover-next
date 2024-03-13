@@ -16,8 +16,10 @@ class Warning {
 
     static html(){
         return `<h5>แจ้งเตือน - Cover Next</h5>
+                <div style="color:green;font-weight: 600">คุณกำลังใช้ปลั๊กอิน Cover Next เป็นปลั๊กอินที่แจกฟรี! <a href="https://github.com/kon3ko/cover-next" target="_blank">(รายละเอียด คลิก!)</a><br>โปรดระวังผู้ไม่หวังดีนำมาหลอกลวงหรือขายให้แก่คุณ</div>
                 <div>หลังจากได้อัปเดตปลั๊กอินเป็นเวอร์ชั่น 2.00 ในหน้าเลือกไฟล์จะไม่มีรูปภาพให้ดูอีกต่อไปสำหรับสมาชิกที่ไม่ได้เป็น Premium ของ BearBit</div>
                 <div>คุณสามารถอ่านรายละเอียดและเสนอความคิดเห็นได้ที่นี่ <a href="https://github.com/kon3ko/cover-next/discussions/7" target="_blank">https://github.com/kon3ko/cover-next/discussions/7</a></div>
+                <div style="color:darkviolet">อัปเดตล่าสุด ทดลองเซิร์ฟเวอร์ Cache 1 เดือน (อย่าลืมเข้าไปอ่านรายละเอียดในลิงก์ด้านบนนะครับ)</div>
                 <br>
                 <button id="warning-close">ปิด</button>`;
     }

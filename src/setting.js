@@ -1,61 +1,61 @@
 import Log from "./modules/log";
 import Serial from "./modules/serial";
-import {Fancybox} from "@fancyapps/ui";
+import { Fancybox } from "@fancyapps/ui";
 import category from "./category";
 import Cache from "./modules/cache";
 
 class Setting {
-    static key                            = 'COVER_NEXT';
-    static version                        = GM_info.script.version ?? '1.00';
-    static serial                         = '';
-    static cache                          = true;
-    static cacheTimeout                   = 604800;
-    static preview                        = true;
-    static previewHover                   = true;
-    static titleHover                     = true; //Donate Version
-    static previewColumnMaxHeight         = 171; //Set false for use auto detect column height
-    static previewMaxHeight               = 80;
-    static previewMaxWidth                = 120;
-    static previewFail                    = 'https://i.imgur.com/jaM7eqT.png?1';
-    static previewExcept                  = 'https://i.imgur.com/blbuhiy.png?1';
-    static exceptCategories               = ['man']; //Donate Version
-    static expandButton                   = true;
-    static downloadWarningSize            = 10; //GB
-    static autoThankHook                  = true;
-    static autoThankInDetail              = true;
-    static album                          = true; //Donate Version
-    static downloaded                     = true; //Donate Version
-    static downloadedHook                 = false; //Donate Version
-    static cacheDownloadedHookTimeout     = 21600;
-    static downloadFinish                 = true; //Donate Version
-    static downloadFinishCacheTimeout     = 300;
-    static downloadFinishNewestHash          = null;
-    static downloadFinishOldestAt         = 0;
-    static downloadFinishNewestAt         = 0;
-    static downloadFinishHistoricalDays   = 30;
+    static key = 'COVER_NEXT';
+    static version = GM_info.script.version ?? '1.00';
+    static serial = '';
+    static cache = true;
+    static cacheTimeout = 604800;
+    static preview = true;
+    static previewHover = true;
+    static titleHover = true; //Donate Version
+    static previewColumnMaxHeight = 171; //Set false for use auto detect column height
+    static previewMaxHeight = 80;
+    static previewMaxWidth = 120;
+    static previewFail = 'https://i.imgur.com/jaM7eqT.png?1';
+    static previewExcept = 'https://i.imgur.com/blbuhiy.png?1';
+    static exceptCategories = ['man']; //Donate Version
+    static expandButton = true;
+    static downloadWarningSize = 10; //GB
+    static autoThankHook = true;
+    static autoThankInDetail = true;
+    static album = true; //Donate Version
+    static downloaded = true; //Donate Version
+    static downloadedHook = false; //Donate Version
+    static cacheDownloadedHookTimeout = 21600;
+    static downloadFinish = true; //Donate Version
+    static downloadFinishCacheTimeout = 300;
+    static downloadFinishNewestHash = null;
+    static downloadFinishOldestAt = 0;
+    static downloadFinishNewestAt = 0;
+    static downloadFinishHistoricalDays = 30;
     static downloadFinishHistoricalWorked = false;
-    static downloadWithoutVip             = false;
-    static fixImageOverScreen             = true;
-    static cleanDetailBanner              = true; //Donate Version
-    static cleanDetailDownloadImage       = true;
-    static cleanDetailBookmarks           = true;
-    static cleanDetailPromote             = true;
-    static fontSize                           = null;
+    static downloadWithoutVip = false;
+    static fixImageOverScreen = true;
+    static cleanDetailBanner = true; //Donate Version
+    static cleanDetailDownloadImage = true;
+    static cleanDetailBookmarks = true;
+    static cleanDetailPromote = true;
+    static fontSize = null;
 
     static load() {
         Log('Load setting');
         let settingsFormStorage = localStorage.getItem(`${this.key}_SETTING`);
-        if (settingsFormStorage) {
+        if(settingsFormStorage) {
             try {
                 settingsFormStorage = JSON.parse(settingsFormStorage);
-            } catch (e) {
+            } catch(e) {
                 settingsFormStorage = {};
             }
         }
-        for (const settingsFormStorageKey in settingsFormStorage) {
-            if (settingsFormStorage.hasOwnProperty(settingsFormStorageKey)
+        for(const settingsFormStorageKey in settingsFormStorage) {
+            if(settingsFormStorage.hasOwnProperty(settingsFormStorageKey)
                 && this.hasOwnProperty(settingsFormStorageKey)) {
-                this[ settingsFormStorageKey ] = settingsFormStorage[ settingsFormStorageKey ];
+                this[settingsFormStorageKey] = settingsFormStorage[settingsFormStorageKey];
             }
         }
 
@@ -65,7 +65,7 @@ class Setting {
         //plugin version
         try {
             Setting.version = GM_info.script.version;
-        } catch (e) {
+        } catch(e) {
         }
 
         //panel
@@ -74,34 +74,34 @@ class Setting {
 
     static loadDefault() {
         localStorage.setItem(`${this.key}_SETTING`, JSON.stringify({
-            serial : Setting.serial
+            serial: Setting.serial
         }));
     }
 
     static array() {
         return Object.getOwnPropertyNames(this)
             .filter(item =>
-                !['undefined', 'function'].includes(typeof (this[ item ]))
+                !['undefined', 'function'].includes(typeof (this[item]))
                 && !['length', 'name', 'prototype'].includes(item));
     }
 
     static save() {
         Log('Save setting');
         let settings = {};
-        Setting.array().map(item => settings[ item ] = this[ item ]);
+        Setting.array().map(item => settings[item] = this[item]);
 
         localStorage.setItem(`${this.key}_SETTING`, JSON.stringify(settings));
     }
 
     static donateVersion() {
-        if (Serial.check() !== Serial.dataReal()) {
-            Setting.album             = false;
-            Setting.downloaded        = false;
-            Setting.downloadedHook    = false;
-            Setting.titleHover        = false;
+        if(Serial.check() !== Serial.dataReal()) {
+            Setting.album = false;
+            Setting.downloaded = false;
+            Setting.downloadedHook = false;
+            Setting.titleHover = false;
             Setting.cleanDetailBanner = false;
-            Setting.downloadFinish    = false;
-            Setting.exceptCategories  = [];
+            Setting.downloadFinish = false;
+            Setting.exceptCategories = [];
 
             return true;
         }
@@ -117,7 +117,7 @@ class Setting {
 
         //click
         $('.setting img').click(() => {
-            new Fancybox([{ src : '#setting-panel', type : 'inline' }]);
+            new Fancybox([{ src: '#setting-panel', type: 'inline' }]);
         });
         $('.setting-panel').html(`<div id="setting-panel">
 <h3>Cover Next</h3>
@@ -254,10 +254,10 @@ class Setting {
         <select name="fontSize">
             <option value="default">ขนาดเท่าเดิม</option>
             ${[...Array(10).keys()].map(item => {
-                item += 7;
-                return `<option value="${item}">${item}</option>` 
-                     + `<option value="${item}.5">${item}.5</option>`;
-            })}
+            item += 7;
+            return `<option value="${item}">${item}</option>`
+                + `<option value="${item}.5">${item}.5</option>`;
+        })}
         </select>
     </div>
   <span>ไม่แสดงภาพหน้าปกหมวดหมู่ที่เลือก, กด Ctrl ค้างไว้เพื่อเลือกมากกว่า 1 ตัวเลือก</span>
@@ -285,39 +285,39 @@ class Setting {
 </form> 
 </div>`);
 
-        $('#form-setting').append($('<button>', { type : 'button', text : 'บันทึกการตั้งค่า' }).click(() => {
+        $('#form-setting').append($('<button>', { type: 'button', text: 'บันทึกการตั้งค่า' }).click(() => {
             //radio
-            $('#form-setting input[type="radio"]:checked').each(( index, input ) => {
-                let _input                     = $(input);
-                Setting[ _input.attr('name') ] = $(input).val() === 'on';
+            $('#form-setting input[type="radio"]:checked').each((index, input) => {
+                let _input = $(input);
+                Setting[_input.attr('name')] = $(input).val() === 'on';
             });
             //text
-            $('#form-setting input[type="text"]').each(( index, input ) => {
-                let _input                     = $(input);
-                Setting[ _input.attr('name') ] = $(input).val();
+            $('#form-setting input[type="text"]').each((index, input) => {
+                let _input = $(input);
+                Setting[_input.attr('name')] = $(input).val();
             });
             //select
-            $('#form-setting select').each(( index, input ) => {
-                let _input                     = $(input);
-                Setting[ _input.attr('name') ] = $(input).val();
+            $('#form-setting select').each((index, input) => {
+                let _input = $(input);
+                Setting[_input.attr('name')] = $(input).val();
             });
             //select multiple
-            $('#form-setting select[multiple]').each(( index, input ) => {
-                let _input                     = $(input);
-                Setting[ _input.attr('name') ] = $(input).val();
+            $('#form-setting select[multiple]').each((index, input) => {
+                let _input = $(input);
+                Setting[_input.attr('name')] = $(input).val();
             });
             Setting.donateVersion();
             Setting.save();
             alert('บันทึกการตั้งค่าเรียบร้อยแล้ว กรุณารีโหลดหน้าเว็บใหม่อีกครั้ง');
-        })).append($('<button>', { type : 'button', text : 'คืนค่าเดิม', style : 'margin-left:10px;' }).click(() => {
-            if (confirm('คุณแน่ใจว่าต้องการคืนค่าตั้งค่าเป็นค่าเริ่มต้นและล้างแคชด้วย?')) {
+        })).append($('<button>', { type: 'button', text: 'คืนค่าเดิม', style: 'margin-left:10px;' }).click(() => {
+            if(confirm('คุณแน่ใจว่าต้องการคืนค่าตั้งค่าเป็นค่าเริ่มต้นและล้างแคชด้วย?')) {
                 Setting.loadDefault();
                 Cache.clean();
                 alert('คืนค่าและล้างแคชเรียบร้อยแล้ว ระบบจะรีเฟรสหน้าเว็บใหม่อีกครั้ง');
                 window.location.reload();
             }
-        })).append($('<button>', { type : 'button', text : 'ล้างแคช', style : 'margin-left:10px;' }).click(() => {
-            if (confirm('คุณแน่ใจว่าต้องการล้างแคช?')) {
+        })).append($('<button>', { type: 'button', text: 'ล้างแคช', style: 'margin-left:10px;' }).click(() => {
+            if(confirm('คุณแน่ใจว่าต้องการล้างแคช?')) {
                 Cache.clean();
                 alert('ล้างแคชเรียบร้อยแล้ว ระบบจะรีเฟรสหน้าเว็บใหม่อีกครั้ง');
                 window.location.reload();
@@ -327,7 +327,7 @@ class Setting {
         // new Fancybox([{ src : '#setting-panel', type : 'inline' }]);
 
         //donate only
-        if (Setting.donateVersion()) {
+        if(Setting.donateVersion()) {
             $('.donate .form-input').addClass('disabled');
             $('.donate .form-input input').prop('disabled', true);
             $('.donate .form-input select').prop('disabled', true);
@@ -335,24 +335,24 @@ class Setting {
 
         //data
         Setting.array().map(item => {
-            if (typeof Setting[ item ] === 'boolean') {
-                $(`input:radio[name=${item}]`).filter(`[value=${Setting[ item ] ? 'on' : 'off'}]`).prop('checked', true);
+            if(typeof Setting[item] === 'boolean') {
+                $(`input:radio[name=${item}]`).filter(`[value=${Setting[item] ? 'on' : 'off'}]`).prop('checked', true);
             }
 
-            if (Array.isArray(Setting[ item ])) {
-                $(`select[name='exceptCategories']`).val(Setting[ item ]);
+            if(Array.isArray(Setting[item])) {
+                $(`select[name='exceptCategories']`).val(Setting[item]);
             }
 
-            if (typeof Setting[ item ] === 'string') {
+            if(typeof Setting[item] === 'string') {
                 let _input = $(`input[name=${item}]`);
-                if (_input && _input.length === 1) {
-                    _input.val(Setting[ item ]);
+                if(_input && _input.length === 1) {
+                    _input.val(Setting[item]);
                 }
             }
 
             //for select
-            if (item === 'fontSize') {
-                $(`select[name=${item}]`).val(Setting[ item ]);
+            if(item === 'fontSize') {
+                $(`select[name=${item}]`).val(Setting[item]);
             }
         });
     }
