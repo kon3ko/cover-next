@@ -45,14 +45,15 @@ class Cover {
 
             //touch progress bar
             this.data.head.touchProgressBar();
-            return;
+        }else{
+            //loading
+            this.html.append(this.loading);
         }
-
-        //loading
-        this.html.append(this.loading);
     }
 
     async nextTick() {
+        if(this.data.except) return;
+
         if(this.cover && this.auth.isPremium && Cache.detail[this.data.detailId]?.cacheServer !== true) {
             try {
                 new ServerCache().set({ id: this.data.detailId, cover: this.cover, auth: this.auth });

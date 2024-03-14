@@ -123,7 +123,9 @@ class Setting {
 <h3>Cover Next</h3>
 <h5>Version: ${Setting.version}</h5>
 <h5>Github: <a href="https://github.com/kon3ko/cover-next" target="_blank">https://github.com/kon3ko/cover-next</a></h5>
-<h5>Donate, Report: <a href="https://m.me/100001345584902" target="_blank">https://m.me/100001345584902</a></h5>
+<h5>Donate: <a href="https://m.me/100001345584902" target="_blank">https://m.me/100001345584902</a> <span class="warning-donate">(Please don't report problems on Messenger.)</span></h5>
+<h5>แจ้งปัญหา: <a href="https://github.com/kon3ko/cover-next/issues" target="_blank">https://github.com/kon3ko/cover-next/issues</a></h5>
+<h5>พูดคุย, เสนอแนะ: <a href="https://github.com/kon3ko/cover-next/discussions" target="_blank">https://github.com/kon3ko/cover-next/discussions</a></h5>
 <br>
 <form id="form-setting">
 <div class="form-group">

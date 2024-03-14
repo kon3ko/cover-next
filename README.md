@@ -28,3 +28,11 @@
 
 2. ติดตั้งปลั๊กอิน Cover Next 
     [คลิกที่นี่เพื่อติดตั้ง](https://raw.githubusercontent.com/kon3ko/cover-next/master/cover-next.user.js)
+
+
+## การใช้งาน
+หลังจากติดตั้งแล้ว คุณสามารถตั้งค่าได้ที่รูปฟันเฟืองมุมล่างขวาจอบนหน้าเว็บบิท\
+หากคุณต้องการอัปเดตสคริปต์ ให้คุณกดติดตั้งซ้ำอีกครั้ง
+
+- [แจ้งปัญหา](https://github.com/kon3ko/cover-next/issues)
+- [พูดคุย, เสนอแนะ](https://github.com/kon3ko/cover-next/discussions)
