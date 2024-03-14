@@ -1,3 +1,5 @@
+import Setting from "./setting";
+
 class Warning {
     static element    = null;
     static statusShow = false;
@@ -8,7 +10,7 @@ class Warning {
     static make( cache ) {
         this.cache = cache;
 
-        if(cache.data.warning - cache.timestamp()  < 0){
+        if(cache.data.warning - cache.timestamp()  < 0 || cache.data.warningCode !== Setting.version){
             this.panel();
             this.show();
         }
@@ -50,6 +52,14 @@ class Warning {
             data : {
                 key : 'warning',
                 value : this.cache.timestamp() + 2592000
+            }
+        });
+
+        this.cache.set({
+            key : 'data',
+            data : {
+                key : 'warningCode',
+                value : Setting.version,
             }
         });
     }

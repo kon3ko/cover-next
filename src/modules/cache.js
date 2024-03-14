@@ -10,6 +10,7 @@ class Cache {
         downloadFinishTimeout: 0,
         welcomeMessage: 0,
         warning: 0,
+        warningCode: '',
     };
     code;
     version = 0;
@@ -24,7 +25,7 @@ class Cache {
 
     set({ key, data, merge = true }) {
         if(typeof data === 'object' && data.hasOwnProperty('key')) {
-            if(merge === true) {
+            if(merge === true && typeof data.value === 'object') {
                 this[key][data.key] = { ...this[key][data.key], ...data.value };
             } else {
                 this[key][data.key] = data.value;
