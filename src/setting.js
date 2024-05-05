@@ -41,6 +41,7 @@ class Setting {
     static cleanDetailBookmarks = true;
     static cleanDetailPromote = true;
     static fontSize = null;
+    static debug = false;
 
     static load() {
         Log('Load setting');

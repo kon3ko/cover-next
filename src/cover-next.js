@@ -48,11 +48,17 @@ import Warning from "./warning";
     ].includes(window.location.pathname)) {
         //check server cache when user is not premium
         let status = false;
-        try{
-            status = await serverCache.check();
-        }catch(e) {
-            console.error(e);
+
+        //loop 5 times
+        for(let i = 0; i < 5; i++) {
+            try{
+                status = await serverCache.check();
+            }catch(e) {
+                console.error(e);
+            }
+            if(status === true) break;
         }
+
         if(status !== true) {
             StatusBar.bottom('เชื่อมต่อกับ Server Cache ล้มเหลว! <a href="https://github.com/kon3ko/cover-next/issues" target="_blank">แจ้งปัญหาที่นี่</a>');
         }

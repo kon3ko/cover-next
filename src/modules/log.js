@@ -1,5 +1,7 @@
+import Setting from "../setting";
+
 function Log( index, message ) {
-    if(process.env.NODE_ENV === 'development'){
+    if(Setting.debug || process.env.NODE_ENV === 'development'){
         if (message === undefined) {
             if (index.charAt(0) === index.charAt(0).toUpperCase())
                 index = `#### ${index} ####`;
