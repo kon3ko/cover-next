@@ -95,7 +95,7 @@ import Warning from "./warning";
 
 
             //add column cover
-            if(Setting.preview === true && (auth.isPremium === true || ServerCache.status)) {
+            if(Setting.preview === true) {
                 $(data.td.get(0)).after(cover.html);
             }
 
@@ -103,7 +103,9 @@ import Warning from "./warning";
             const button = new Button({ data, cover });
 
             //add column cover
-            $(data.td.get(1)).append(button.html);
+            if(Setting.preview === true) {
+                $(data.td.get(1)).append(button.html);
+            }
 
             //downloaded
             if(Cache.downloaded[data.detailId] !== undefined) Download.downloaded({ data });
