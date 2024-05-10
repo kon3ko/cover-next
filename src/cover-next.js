@@ -43,6 +43,7 @@ import Warning from "./warning";
         '/viewno18.php',
         '/viewbr.php',
         '/upfinish.php',
+        '/viewno18sbx.php',
         '/viewno18sb.php',
         '/viewbrsb.php',
     ].includes(window.location.pathname)) {
