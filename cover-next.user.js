@@ -10,6 +10,7 @@
 // @match        https://www.bearbit.co/viewno18.php*
 // @match        https://www.bearbit.co/viewbr.php*
 // @match        https://www.bearbit.co/viewno18sb.php*
+// @match        https://www.bearbit.co/viewno18sbx.php*
 // @match        https://www.bearbit.co/viewbrsb.php*
 // @match        https://www.bearbit.co/torrent_day.php*
 // @match        https://www.bearbit.co/torrent_week.php*
@@ -22,6 +23,7 @@
 // @match        https://bearbit.co/viewno18.php*
 // @match        https://bearbit.co/viewbr.php*
 // @match        https://bearbit.co/viewno18sb.php*
+// @match        https://bearbit.co/viewno18sbx.php*
 // @match        https://bearbit.co/viewbrsb.php*
 // @match        https://bearbit.co/torrent_day.php*
 // @match        https://bearbit.co/torrent_week.php*
