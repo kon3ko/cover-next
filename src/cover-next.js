@@ -102,11 +102,8 @@ import Warning from "./warning";
 
             //button
             const button = new Button({ data, cover });
-
             //add column cover
-            if(Setting.preview === true) {
-                $(data.td.get(1)).append(button.html);
-            }
+            $(data.td.get(1)).append(button.html);
 
             //downloaded
             if(Cache.downloaded[data.detailId] !== undefined) Download.downloaded({ data });
