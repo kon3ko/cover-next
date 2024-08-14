@@ -17,13 +17,13 @@ class Warning {
     }
 
     static html(){
-        return `<h5>แจ้งเตือน - Cover Next</h5>
+        return `<h5>แจ้งเตือน - Cover Next ` + Setting.version + `</h5>
                 <div style="color:green;font-weight: 600">คุณกำลังใช้ปลั๊กอิน Cover Next เป็นปลั๊กอินที่แจกฟรี! <a href="https://github.com/kon3ko/cover-next" target="_blank">(รายละเอียด คลิก!)</a><br>โปรดระวังผู้ไม่หวังดีนำมาหลอกลวงหรือขายให้แก่คุณ</div>
-                <div>หลังจากได้อัปเดตปลั๊กอินเป็นเวอร์ชั่น 2.00 ในหน้าเลือกไฟล์จะไม่มีรูปภาพให้ดูอีกต่อไปสำหรับสมาชิกที่ไม่ได้เป็น Premium ของ BearBit</div>
-                <div>คุณสามารถอ่านรายละเอียดและเสนอความคิดเห็นได้ที่นี่ <a href="https://github.com/kon3ko/cover-next/discussions/7" target="_blank">https://github.com/kon3ko/cover-next/discussions/7</a></div>
-                <div style="color:darkviolet">อัปเดตล่าสุด ทดลองเซิร์ฟเวอร์ Cache 1 เดือน (อย่าลืมเข้าไปอ่านรายละเอียดในลิงก์ด้านบนนะครับ)</div>
+                <div>อัปเดตนี้อาจจะเป็นอัปเดตสุดท้าย (v2.2x) ช่วงนี้ผมไม่ได้ว่างมาทำงานหน้าคอมเลย หากมีปัญหาให้เปิด <a href="https://github.com/kon3ko/cover-next/issues" target="_blank">Issue</a> ไว้นะครับ</div>
+                <div>ปิดการ Donation เพราะทุกคนทักมาหาผมเพื่อให้แก้ปัญหาหรือแจ้งปัญหาทางเฟสเท่านั้น คงเพราะมันสะดวกทุกคนแต่ผมไล่ตอบทุกคนไม่สะดวกจริง ๆ ครับ</a></div>
+                <div style="color:darkviolet">เซิร์ฟเวอร์ Cache ไม่มีให้ใช้งานแล้ว หากทางเว็บเอารูปกล้องออกทำใจกันรอเลยครับ</div>
                 <br>
-                <button id="warning-close">ปิด</button>`;
+                <button id="warning-close">ปิด</button> (หน้าต่างนี้จะขึ้นมาทุก 1 เดือนไม่ต้องตกใจครับ)`;
     }
 
     static show() {
