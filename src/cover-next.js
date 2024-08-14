@@ -13,6 +13,7 @@ import Album from "./modules/album";
 import Detail from "./modules/detail";
 import Boot from "./modules/boot";
 import './template';
+//import './skin';
 import Auth from "./modules/auth";
 import DownloadFinish from "./modules/download-finish";
 import StatusBar from "./status-bar";
@@ -51,17 +52,19 @@ import Warning from "./warning";
         let status = false;
 
         //loop 5 times
-        for(let i = 0; i < 5; i++) {
-            try{
-                status = await serverCache.check();
-            }catch(e) {
-                console.error(e);
+        if(Setting.serverCache ===  true){
+            for(let i = 0; i < 5; i++) {
+                try{
+                    status = await serverCache.check();
+                }catch(e) {
+                    console.error(e);
+                }
+                if(status === true) break;
             }
-            if(status === true) break;
-        }
 
-        if(status !== true) {
-            StatusBar.bottom('เชื่อมต่อกับ Server Cache ล้มเหลว! <a href="https://github.com/kon3ko/cover-next/issues" target="_blank">แจ้งปัญหาที่นี่</a>');
+            if(status !== true) {
+                StatusBar.bottom('เชื่อมต่อกับ Server Cache ล้มเหลว! <a href="https://github.com/kon3ko/cover-next/issues" target="_blank">แจ้งปัญหาที่นี่</a>');
+            }
         }
 
         //head
@@ -102,7 +105,7 @@ import Warning from "./warning";
 
             //button
             const button = new Button({ data, cover });
-            //add column cover
+            //add button
             $(data.td.get(1)).append(button.html);
 
             //downloaded
@@ -124,7 +127,7 @@ import Warning from "./warning";
         });
 
         //covers
-        if(ServerCache.status === true && auth.isPremium === false) {
+        if(Setting.serverCache === true && ServerCache.status === true && auth.isPremium === false) {
             await serverCache.get(covers.map(cover => cover.data.detailId));
         }
         covers.forEach((cover) => {

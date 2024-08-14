@@ -1,7 +1,7 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css');
 @import url('https://www.jqueryscript.net/demo/Responsive-jQuery-Modal-Window-Plugin-with-CSS3-Transitions-Custombox/src/jquery.custombox.css');
 
-//loading
+/* loading */
 .lds-grid {
     display: inline-block;
     position: relative;
@@ -83,12 +83,12 @@
     }
 }
 
-//preview
+/* preview */
 .preview.hide {
     display: none;
 }
 
-//preview hover
+/* preview hover */
 .hover-popup {
     position: absolute;
     border: 1px solid #fff;
@@ -99,7 +99,7 @@
     color: #fff;
 }
 
-//cursor loading
+/* cursor loading */
 .cursor-progress {
     cursor: progress;
 }
@@ -108,7 +108,7 @@
     cursor: pointer;
 }
 
-//button
+/* button */
 .ZSS_manager {
     hr {
         border: 1px #9090905e solid;
@@ -191,7 +191,7 @@
     }
 }
 
-//fancybox
+/* fancybox */
 .fancybox__content img {
     max-width: 100%;
 }
@@ -212,13 +212,13 @@
     width: 50%;
 }
 
-//downloaded
+/* downloaded */
 .downloaded {
     color: #909090;
 }
 
 
-//detail
+/* detail */
 #detail.fix-image-over-screen img {
     max-width: 100%;
 }
@@ -228,7 +228,7 @@
     font-weight: bold;
 }
 
-//setting
+/* setting */
 .setting {
     position: fixed;
     bottom: 10px;
