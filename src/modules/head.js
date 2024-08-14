@@ -33,15 +33,17 @@ class Head {
         Log('add column cover');
 
         //add column
-        if(Setting.preview === true && (auth.isPremium === true || ServerCache.status)){
-            $(td.get(0)).after(
-                $("<td>", {
-                    class : 'colhead 11',
-                    align : 'center',
-                    width : '125px',
-                    text  : "รูป"
-                }).append(this.progressBar.template)
-            );
+        if(itemLength > 0){
+            if(Setting.preview === true && (auth.isPremium === true || ServerCache.status)){
+                $(td.get(0)).after(
+                    $("<td>", {
+                        class : 'colhead 11',
+                        align : 'center',
+                        width : '125px',
+                        text  : "รูป"
+                    }).append(this.progressBar.template)
+                );
+            }
         }
 
         //touch first
