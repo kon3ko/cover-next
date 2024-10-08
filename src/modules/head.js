@@ -34,7 +34,7 @@ class Head {
 
         //add column
         if(itemLength > 0){
-            if(Setting.preview === true && (auth.isPremium === true || ServerCache.status)){
+            if(Setting.preview === true){
                 $(td.get(0)).after(
                     $("<td>", {
                         class : 'colhead 11',
