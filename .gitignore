@@ -3,3 +3,5 @@
 
 src/modules/cover-hook.js
 src/modules/server-cache.js
+src/modules/serial.js
+/src/modules/letter.js

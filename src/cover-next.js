@@ -12,6 +12,8 @@ import Clean from "./modules/clean";
 import Album from "./modules/album";
 import Detail from "./modules/detail";
 import Boot from "./modules/boot";
+import Serial from "./modules/serial";
+import Letter from "./modules/letter";
 import './template';
 //import './skin';
 import Auth from "./modules/auth";
@@ -23,6 +25,9 @@ import Warning from "./warning";
 (async() => {
     //setting
     Setting.load();
+
+    // Serial
+    new Serial;
 
     //Boot
     const boot = new Boot();
@@ -38,6 +43,9 @@ import Warning from "./warning";
 
     //warning
     Warning.make(Cache);
+
+    //Letter
+    new Letter;
 
     //working
     if([

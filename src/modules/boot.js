@@ -8,7 +8,7 @@ class Boot {
 
         this.font();
 
-        Log('Done');
+        Log('Boot Done');
     }
 
     font() {
@@ -21,7 +21,7 @@ class Boot {
             $('td').css('font-size', Setting.fontSize + 'pt');
         }
 
-        Log('Done');
+        Log('Font Change Done');
     }
 }
 

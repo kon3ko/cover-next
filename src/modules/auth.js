@@ -6,7 +6,7 @@ class Auth {
     isPremium;
 
     constructor() {
-        Log('Auth');
+        Log('Auth...');
 
         this.detail();
         this.isPremium = this.premium();
@@ -14,7 +14,7 @@ class Auth {
         Log('username: ' + this.username);
         Log('id: ' + this.id);
 
-        Log('Done');
+        Log('Auth Done');
     }
 
     detail() {

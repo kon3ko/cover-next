@@ -20,8 +20,8 @@ class Warning {
         return `<h5>แจ้งเตือน - Cover Next ` + Setting.version + `</h5>
                 <div style="color:green;font-weight: 600">คุณกำลังใช้ปลั๊กอิน Cover Next เป็นปลั๊กอินที่แจกฟรี! <a href="https://github.com/kon3ko/cover-next" target="_blank">(รายละเอียด คลิก!)</a><br>โปรดระวังผู้ไม่หวังดีนำมาหลอกลวงหรือขายให้แก่คุณ</div>
                 <div>อัปเดตนี้อาจจะเป็นอัปเดตสุดท้าย (v2.2x) ช่วงนี้ผมไม่ได้ว่างมาทำงานหน้าคอมเลย หากมีปัญหาให้เปิด <a href="https://github.com/kon3ko/cover-next/issues" target="_blank">Issue</a> ไว้นะครับ</div>
-                <div>ปิดการ Donation เพราะทุกคนทักมาหาผมเพื่อให้แก้ปัญหาหรือแจ้งปัญหาทางเฟสเท่านั้น คงเพราะมันสะดวกทุกคนแต่ผมไล่ตอบทุกคนไม่สะดวกจริง ๆ ครับ</a></div>
-                <div style="color:darkviolet">เซิร์ฟเวอร์ Cache ไม่มีให้ใช้งานแล้ว หากทางเว็บเอารูปกล้องออกทำใจกันรอเลยครับ</div>
+                <div style="color:orangered">🎊🎉🎈 สุขสันต์วันปีใหม่ 2025 ล่วงหน้านะครับ 🍻🥳🎆</div>
+                <div style="color:#b7423c">อัปเดต เพิ่มออโต้อ่านจดหมาย สำหรับคนที่ Donate ให้เปิดได้ที่ตั้งค่าครับ 🤖</div>
                 <br>
                 <button id="warning-close">ปิด</button> (หน้าต่างนี้จะขึ้นมาทุก 1 เดือนไม่ต้องตกใจครับ)`;
     }

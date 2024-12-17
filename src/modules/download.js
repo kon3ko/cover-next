@@ -64,10 +64,9 @@ class Download {
             Cache.set({ key : 'downloaded', data : { key : detail.id, value : Cache.timestamp() } });
 
             Log('set downloaded and cache');
-            Log('Done');
         });
 
-        Log('Done');
+        Log('Downloaded Done');
     }
 
     static downloadedHook( { html, self } ) {

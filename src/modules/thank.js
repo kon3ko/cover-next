@@ -64,7 +64,7 @@ class Thank {
     }
 
     static thankInDetail( element ) {
-        Log('Thank in detail');
+        Log('Thank in detail...');
         let a = $('#saythanks a', element);
 
         if (a) {
@@ -92,7 +92,7 @@ class Thank {
             }
         });
 
-        Log('Done');
+        Log('Thank in detail Done');
     }
 }
 

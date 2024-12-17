@@ -27,14 +27,14 @@ class PassData {
     elements = {};
 
     constructor( { element, head } ) {
-        Log('Pass data');
+        Log('Pass data...');
 
         this.element = element;
         this.head    = head;
 
         this.convert();
 
-        Log('Done');
+        Log('Pass data Done');
     }
 
     convert() {

@@ -28,7 +28,7 @@ class DirectSource {
             let result = this.replace(this.domains[ this.domain ][ 0 ], this.domains[ this.domain ][ 1 ]);
 
             Log(this.hash, `replace: ${result}`);
-            Log('Done.');
+            Log('Direct source Done.');
 
             return result;
         }
@@ -36,7 +36,7 @@ class DirectSource {
         //direct
         if (this.isDirect()) {
             Log(this.hash, 'direct link.');
-            Log('Done');
+            Log('Direct source Done');
 
             return this.url;
         }
@@ -111,7 +111,7 @@ class DirectSource {
             }
 
             if (link !== undefined) {
-                Log('Done');
+                Log('Direct source Done');
 
                 return link;
             }

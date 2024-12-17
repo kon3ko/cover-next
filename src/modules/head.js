@@ -49,7 +49,7 @@ class Head {
         //touch first
         this.touchProgressBar();
 
-        Log('Done');
+        Log('Head Done');
     }
 
     touchProgressBar() {

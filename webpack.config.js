@@ -1,10 +1,9 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 const webpack = require('webpack');
-
+const WebpackObfuscator = require('webpack-obfuscator');
 const path = require("path");
 
 const isProduction = process.env.NODE_ENV === "production";
-
 const stylesHandler = "style-loader";
 
 const config = {
@@ -21,7 +20,27 @@ const config = {
         new webpack.ProvidePlugin({
             $      : "jquery",
             jQuery : "jquery"
-        })
+        }),
+        isProduction ? new WebpackObfuscator({
+            compact: true,
+            controlFlowFlattening: true,
+            controlFlowFlatteningThreshold: 1,
+            deadCodeInjection: true,
+            deadCodeInjectionThreshold: 1,
+            debugProtection: true,
+            debugProtectionInterval: 1000,
+            stringArray: true,
+            stringArrayEncoding: ['rc4'],
+            stringArrayThreshold: 1,
+            renameGlobals: true,
+            identifierNamesGenerator: 'mangled',
+            selfDefending: true,
+            simplify: true,
+            output: {
+                beautify: false,
+                comments: false,
+            }
+        }) : () => {},
     ],
     module    : {
         rules : [
@@ -50,7 +69,7 @@ const config = {
         fallback : {
             "crypto" : false,
             "buffer" : false
-        }
+        },
     }
 };
 

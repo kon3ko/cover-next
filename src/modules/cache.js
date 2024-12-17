@@ -20,7 +20,7 @@ class Cache {
 
         this.read();
 
-        Log('Done');
+        Log('Cache Done');
     }
 
     set({ key, data, merge = true }) {

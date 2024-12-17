@@ -91,6 +91,7 @@ class Cover {
 
             this.loading.hide();
             this.preview.attr('src', Setting.previewFail);
+            this.preview.addClass('no-image');
             this.html.append(this.preview);
             this.preview.removeClass('hide');
 
@@ -118,6 +119,7 @@ class Cover {
         this.preview
             .on('error', (e) => {
                 e.target.src = Setting.previewFail;
+                e.target.className += " no-image"
 
                 Log(this.data.hash, 'load preview fail!');
             })

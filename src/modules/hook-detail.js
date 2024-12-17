@@ -50,7 +50,7 @@ class HookDetail {
 
             $('body').append(frame);
 
-            Log('Done');
+            Log('Frame Done');
         });
     }
 }

@@ -1,5 +1,4 @@
 import Log from "./modules/log";
-import Serial from "./modules/serial";
 import { Fancybox } from "@fancyapps/ui";
 import category from "./category";
 import Cache from "./modules/cache";
@@ -23,6 +22,7 @@ class Setting {
     static downloadWarningSize = 10; //GB
     static autoThankHook = true;
     static autoThankInDetail = true;
+    static autoReadLetter = false;
     static album = true; //Donate Version
     static downloaded = true; //Donate Version
     static downloadedHook = false; //Donate Version
@@ -61,9 +61,6 @@ class Setting {
             }
         }
 
-        //donate version
-        Setting.donateVersion();
-
         //plugin version
         try {
             Setting.version = GM_info.script.version;
@@ -95,21 +92,29 @@ class Setting {
         localStorage.setItem(`${this.key}_SETTING`, JSON.stringify(settings));
     }
 
-    static donateVersion() {
-        if(Serial.check() !== Serial.dataReal()) {
-            Setting.album = false;
-            Setting.downloaded = false;
-            Setting.downloadedHook = false;
-            Setting.titleHover = false;
-            Setting.cleanDetailBanner = false;
-            Setting.downloadFinish = false;
-            Setting.exceptCategories = [];
+    static update(){
+        Setting.array().map(item => {
+            if(typeof Setting[item] === 'boolean') {
+                $(`input:radio[name=${item}]`).filter(`[value=${Setting[item] ? 'on' : 'off'}]`).prop('checked', true);
+            }
 
-            return true;
-        }
+            if(Array.isArray(Setting[item])) {
+                $(`select[name='exceptCategories']`).val(Setting[item]);
+            }
 
-        return false;
-    };
+            if(typeof Setting[item] === 'string') {
+                let _input = $(`input[name=${item}]`);
+                if(_input && _input.length === 1) {
+                    _input.val(Setting[item]);
+                }
+            }
+
+            //for select
+            if(item === 'fontSize') {
+                $(`select[name=${item}]`).val(Setting[item]);
+            }
+        });
+    }
 
     static panel() {
         Log('Mount panel');
@@ -225,6 +230,15 @@ class Setting {
     <span>ทำงานเฉพาะในหน้ารายละเอียด</span>
 </div>
 
+<div class="form-group donate">
+<label class="donate">[Donate Version] อ่านจดหมาย (แจ้งเพื่อทราบ หรือ เกมส์) อัตโนมัติ</label><br>
+  <div class="form-input">
+        <input type="radio" name="autoReadLetter" value="on"> <span class="green">เปิด</span> 
+        <input type="radio" name="autoReadLetter" value="off"> <span class="red">ปิด</span>
+    </div>
+    <span>เพื่อให้กดดาวน์โหลดไฟล์ได้เลยโดยไม่ต้องเสียเวลาเข้าไปอ่าน</span>
+</div>
+
 <div class="form-group">
 <label >ลบไอค่อนดาวน์โหลด</label><br>
   <div class="form-input">
@@ -310,7 +324,6 @@ class Setting {
                 let _input = $(input);
                 Setting[_input.attr('name')] = $(input).val();
             });
-            Setting.donateVersion();
             Setting.save();
             alert('บันทึกการตั้งค่าเรียบร้อยแล้ว กรุณารีโหลดหน้าเว็บใหม่อีกครั้ง');
         })).append($('<button>', { type: 'button', text: 'คืนค่าเดิม', style: 'margin-left:10px;' }).click(() => {
@@ -330,35 +343,8 @@ class Setting {
 
         // new Fancybox([{ src : '#setting-panel', type : 'inline' }]);
 
-        //donate only
-        if(Setting.donateVersion()) {
-            $('.donate .form-input').addClass('disabled');
-            $('.donate .form-input input').prop('disabled', true);
-            $('.donate .form-input select').prop('disabled', true);
-        }
-
         //data
-        Setting.array().map(item => {
-            if(typeof Setting[item] === 'boolean') {
-                $(`input:radio[name=${item}]`).filter(`[value=${Setting[item] ? 'on' : 'off'}]`).prop('checked', true);
-            }
-
-            if(Array.isArray(Setting[item])) {
-                $(`select[name='exceptCategories']`).val(Setting[item]);
-            }
-
-            if(typeof Setting[item] === 'string') {
-                let _input = $(`input[name=${item}]`);
-                if(_input && _input.length === 1) {
-                    _input.val(Setting[item]);
-                }
-            }
-
-            //for select
-            if(item === 'fontSize') {
-                $(`select[name=${item}]`).val(Setting[item]);
-            }
-        });
+        Setting.update();
     }
 }
 
